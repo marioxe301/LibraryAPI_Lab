@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+using LibraryCatalog.DATA;
+
 namespace LibraryCatalog.API
 {
     public class Startup
@@ -26,6 +28,7 @@ namespace LibraryCatalog.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<LibraryCatalogContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
