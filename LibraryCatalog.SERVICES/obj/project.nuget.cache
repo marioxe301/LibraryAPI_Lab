@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "ySPGTOY44sR6mF9tRqq/GsK8eAA78x/C887ZuKM2ywl9rfZFsroSajgRNcVowrFIiSzVQYD7uWuWcYTws3n2Fg==",
+  "success": true,
+  "projectFilePath": "/home/mgfe/Escritorio/Laboratorio/LibraryCatalog/LibraryCatalog.SERVICES/LibraryCatalog.SERVICES.csproj",
+  "expectedPackageFiles": [
+    "/home/mgfe/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/home/mgfe/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
