@@ -12,6 +12,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 using LibraryCatalog.DATA;
+using LibraryCatalog.DATA.Models;
+using LibraryCatalog.CORE;
+using LibraryCatalog.DATA.Repositories;
 
 namespace LibraryCatalog.API
 {
@@ -29,6 +32,8 @@ namespace LibraryCatalog.API
         {
             services.AddControllers();
             services.AddDbContext<LibraryCatalogContext>();
+            services.AddScoped<IRepository<Author>, AuthorRepository>();
+            services.AddScoped<IRepository<Book>, BookRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

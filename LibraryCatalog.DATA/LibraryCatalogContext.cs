@@ -6,9 +6,9 @@ namespace LibraryCatalog.DATA
     public class LibraryCatalogContext: DbContext 
     {
         //Tablas de nuestra base de datos
-        DbSet<Author> Author { get; set;}
+        public DbSet<Author> Author { get; set;}
 
-        DbSet<Book> Book { get; set; }
+        public DbSet<Book> Book { get; set; }
 
         //configuracion de la base de datos
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

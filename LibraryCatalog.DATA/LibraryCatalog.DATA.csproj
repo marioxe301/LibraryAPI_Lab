@@ -13,4 +13,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibraryCatalog.CORE\LibraryCatalog.CORE.csproj" />
+  </ItemGroup>
 </Project>
