@@ -16,5 +16,7 @@ namespace LibraryCatalog.DATA.Models
         [ForeignKey(nameof(Author))]
         public int authorId {get; set;}
 
+        public Author author { get; set; }
+
     }
 }

@@ -5,6 +5,9 @@
     <ProjectReference Include="..\LibraryCatalog.CORE\LibraryCatalog.CORE.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\LibraryCatalog.SERVICES\LibraryCatalog.SERVICES.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
 
   <ItemGroup>

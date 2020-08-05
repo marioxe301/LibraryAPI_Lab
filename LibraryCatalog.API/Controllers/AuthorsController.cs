@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LibraryCatalog.CORE;
+using LibraryCatalog.CORE.Models;
+using LibraryCatalog.SERVICES;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,11 +14,22 @@ namespace LibraryCatalog.API.Controllers
     [Route("api/[controller]")]
     public class AuthorsController : Controller
     {
+
+        private readonly IAuthorService _authorService;
+
+        AuthorsController(IAuthorService authorService)
+        {
+            _authorService = authorService;
+        }
+
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public ActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            var authorServiceResult = _authorService.GetAll();
+            if (authorServiceResult.ResponseCode != ResponseCode.Success)
+                return BadRequest(authorServiceResult.Error);
+            return Ok(authorServiceResult.Result);
         }
 
         // GET api/values/5
@@ -27,8 +41,12 @@ namespace LibraryCatalog.API.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] AuthorDataTransferObjet author)
         {
+            var authorServiceResult = _authorService.Add(author);
+            if (authorServiceResult.ResponseCode != ResponseCode.Success)
+                return BadRequest(authorServiceResult.Error);
+            return Ok(authorServiceResult.Result);
         }
 
         // PUT api/values/5

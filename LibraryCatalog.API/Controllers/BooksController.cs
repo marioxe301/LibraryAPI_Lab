@@ -3,19 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using LibraryCatalog.SERVICES;
+using LibraryCatalog.CORE.Models;
+using LibraryCatalog.CORE;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace LibraryCatalog.API.Controllers
 {
     [Route("api/[controller]")]
+    [ApiController]
     public class BooksController : Controller
     {
+        private readonly IBookService _bookService;
+
+        BooksController(IBookService bookService)
+        {
+            _bookService = bookService;
+        }
+
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public ActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            var bookServiceResult = _bookService.GetAll();
+            if (bookServiceResult.ResponseCode != ResponseCode.Success)
+                return BadRequest(bookServiceResult.Error);
+            return Ok(bookServiceResult.Result);
         }
 
         // GET api/values/5
@@ -27,8 +41,12 @@ namespace LibraryCatalog.API.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] BookDataTransferObjet book)
         {
+            var bookServiceResult = _bookService.Add(book);
+            if (bookServiceResult.ResponseCode != ResponseCode.Success)
+                return BadRequest(bookServiceResult.Error);
+            return Ok(bookServiceResult.Result);
         }
 
         // PUT api/values/5
